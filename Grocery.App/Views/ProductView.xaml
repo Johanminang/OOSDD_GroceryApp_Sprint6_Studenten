@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:Grocery.App.ViewModels"
              x:Class="Grocery.App.Views.ProductView"
+             x:DataType="vm:NewProductViewModel"
              Title="ProductView">
     
     <Shell.TitleView>
