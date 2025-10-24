@@ -39,12 +39,11 @@ namespace Grocery.App.ViewModels
         {
             if (Client.Role == Role.Admin)
             {
-                // Navigeren naar de nieuwe productpagina
                 await Shell.Current.GoToAsync(nameof(NewProductView));
             }
             else
             {
-                await Shell.Current.DisplayAlert("Toegang geweigerd", "Je hebt geen toestemming om een nieuw product toe te voegen.", "OK");
+                await Shell.Current.DisplayAlert("Toegang geweigerd", "Je kan geen nieuw product toevoegen.", "OK");
             }
         }
     }

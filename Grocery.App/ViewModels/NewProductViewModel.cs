@@ -12,7 +12,7 @@ namespace Grocery.App.ViewModels
     public partial class NewProductViewModel : BaseViewModel
     {
         private readonly IProductService _productService;
-        private readonly GlobalViewModel _global;
+        private readonly GlobalViewModel _globalViewModel;
 
         [ObservableProperty]
         private Client client;
@@ -35,17 +35,16 @@ namespace Grocery.App.ViewModels
         public NewProductViewModel(IProductService productService, GlobalViewModel global)
         {
             _productService = productService;
-            _global = global;
+            _globalViewModel = global;
             client = global.Client;
         }
 
         [RelayCommand]
         private async Task SaveAsync()
         {
-            // Validatie
             if (string.IsNullOrWhiteSpace(Name))
             {
-                await Shell.Current.DisplayAlert("Fout", "Voer een productnaam in.", "OK");
+                await Shell.Current.DisplayAlert("Fout", "Voer een naam van het product in.", "OK");
                 return;
             }
 
@@ -61,15 +60,12 @@ namespace Grocery.App.ViewModels
                 return;
             }
 
-            // Nieuw product aanmaken
-
-            //ID wordt automatisch gegenereerd
             var product = new Product(0, Name, Stock, DateOnly.FromDateTime(ShelfLifeDateTime), Price);
 
             _productService.Add(product);
 
             await Shell.Current.DisplayAlert("Succes", "Product is toegevoegd.", "OK");
-            await Shell.Current.GoToAsync(".."); // Terug naar vorige pagina
+            await Shell.Current.GoToAsync("..");
         }
 
         [RelayCommand]

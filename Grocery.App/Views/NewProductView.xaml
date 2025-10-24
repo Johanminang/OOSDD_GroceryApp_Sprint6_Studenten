@@ -11,7 +11,7 @@
 
             <!-- Titel -->
             <Label 
-                Text="Nieuw Product Aanmaken"
+                Text="Nieuw Product"
                 FontSize="24"
                 FontAttributes="Bold"
                 HorizontalOptions="Center"
