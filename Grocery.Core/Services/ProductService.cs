@@ -20,7 +20,9 @@ namespace Grocery.Core.Services
 
         public Product Add(Product item)
         {
-            throw new NotImplementedException();
+            var addProduct = _productRepository.Add(item);
+            _productRepository.GetAll();
+            return addProduct;
         }
 
         public Product? Delete(Product item)
